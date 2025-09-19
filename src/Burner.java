@@ -2,10 +2,13 @@
 public class Burner {
 
 	public enum Temperature{
-		BLAZING ("VERY HOT! DON'T TOUCH"), 
-		HOT ("CAREFUL"), 
+		COLD ("cooool"),
 		WARM ("warm"), 
-		COLD ("cooool");
+		HOT ("CAREFUL"), 
+		BLAZING ("VERY HOT! DON'T TOUCH");
+		
+		
+		
 		private String value;
 		
 		Temperature (String temp) {
@@ -43,9 +46,9 @@ public class Burner {
 				break;
 			case HIGH:
 				this.mySetting = Setting.HIGH;
+				break;
 		}
-		
-		timer = TIME_DURATION;
+		this.timer = TIME_DURATION;
 	}
 	
 	public void minusButton() {
@@ -63,28 +66,38 @@ public class Burner {
 				this.mySetting = Setting.OFF;
 		}
 
-//		timer = TIME_DURATION; Maybe need???
+		this.timer = TIME_DURATION;
 	}
 	
 	public void updateTemperature() {
+//		System.out.println(this.timer);
+//		System.out.println("Setting:"+this.mySetting.ordinal());
+//		System.out.println("Temp:" + this.myTemperature.ordinal());
+		if (this.mySetting.ordinal() == this.myTemperature.ordinal()) { this.timer=0;}
 		if (this.timer == 1) {
 			// If max temp for setting is reached
-			if (this.mySetting.ordinal() == this.myTemperature.ordinal() - 1) {
+//			System.out.println("Setting:" + this.mySetting);
+//			System.out.println("Before:" + this.myTemperature);
+			if (this.mySetting.ordinal() > this.myTemperature.ordinal()) {
 				this.myTemperature = Temperature.values()[this.myTemperature.ordinal() + 1];
-				this.timer = 0;
+				this.timer = TIME_DURATION;
+			}
+			if (this.mySetting.ordinal() < this.myTemperature.ordinal()) {
+				this.myTemperature = Temperature.values()[this.myTemperature.ordinal() - 1];
+				this.timer = TIME_DURATION;
 			}
 		}
 		else if (this.timer == 2) {
-			this.timer--;
+			this.timer = 1;
 		}
-
+//		System.out.println("After:" + this.myTemperature);
 	}
 	
 	public void display() {
-		System.out.println("[" + mySetting + "]....." + myTemperature);
+		System.out.println("[" + this.mySetting + "]....." + this.myTemperature);
 	}
 	
 	public Temperature getTemperature() {
-		return myTemperature;
+		return this.myTemperature;
 	}
 }
