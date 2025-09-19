@@ -31,7 +31,7 @@ public class Stove {
 	 **** You must write the following method ****
 	 */
 	public void displayStove() {
-		boolean isBlazing= false;
+		boolean isBlazing= false; // keeps track of if there exists a Blazing burner or not
 		for(Burner burner : this.burners) {
 			burner.display();
 			if( burner.getTemperature() == Burner.Temperature.BLAZING) isBlazing = true;

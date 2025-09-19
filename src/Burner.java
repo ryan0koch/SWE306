@@ -1,3 +1,11 @@
+/**
+ * Burner class. 
+ *  
+ * @author Yamato Matsumura
+ * @author Ryan Koch
+ * 
+ * Purpose: Logic for controlling the burners
+ */
 
 public class Burner {
 
@@ -6,8 +14,7 @@ public class Burner {
 		WARM ("warm"), 
 		HOT ("CAREFUL"), 
 		BLAZING ("VERY HOT! DON'T TOUCH");
-		
-		
+
 		
 		private String value;
 		
@@ -30,6 +37,8 @@ public class Burner {
 	public Burner() {
 		this.myTemperature = Temperature.COLD;
 		this.mySetting = Setting.OFF;
+		
+		// Starting timer goes to 0
 		this.timer = 0;
 	}
 	
@@ -44,6 +53,7 @@ public class Burner {
 			case MEDIUM:
 				this.mySetting = Setting.HIGH;
 				break;
+			// Keep on high is already on high
 			case HIGH:
 				this.mySetting = Setting.HIGH;
 				break;
@@ -62,6 +72,7 @@ public class Burner {
 			case LOW:
 				this.mySetting = Setting.OFF;
 				break;
+			// Keep on OFF if already on OFF
 			case OFF:
 				this.mySetting = Setting.OFF;
 		}
@@ -70,27 +81,26 @@ public class Burner {
 	}
 	
 	public void updateTemperature() {
-//		System.out.println(this.timer);
-//		System.out.println("Setting:"+this.mySetting.ordinal());
-//		System.out.println("Temp:" + this.myTemperature.ordinal());
-		if (this.mySetting.ordinal() == this.myTemperature.ordinal()) { this.timer=0;}
+		if (this.mySetting.ordinal() == this.myTemperature.ordinal()) { this.timer=0;} // If setting and temperature agree then set timer to 0
+		
+		// If temperature needs to change
 		if (this.timer == 1) {
-			// If max temp for setting is reached
-//			System.out.println("Setting:" + this.mySetting);
-//			System.out.println("Before:" + this.myTemperature);
 			if (this.mySetting.ordinal() > this.myTemperature.ordinal()) {
+				// Increase temperature to one higher than currently set
 				this.myTemperature = Temperature.values()[this.myTemperature.ordinal() + 1];
 				this.timer = TIME_DURATION;
 			}
 			if (this.mySetting.ordinal() < this.myTemperature.ordinal()) {
+				// Decrease temperature to one lower than currently set
 				this.myTemperature = Temperature.values()[this.myTemperature.ordinal() - 1];
 				this.timer = TIME_DURATION;
 			}
 		}
+		
+		// Update normally if no changes need to be made
 		else if (this.timer == 2) {
 			this.timer = 1;
 		}
-//		System.out.println("After:" + this.myTemperature);
 	}
 	
 	public void display() {
