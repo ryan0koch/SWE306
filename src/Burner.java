@@ -81,7 +81,7 @@ public class Burner {
 	}
 	
 	public void display() {
-		System.out.println("[" + mySetting.toString() + "]....." + myTemperature.toString());
+		System.out.println("[" + mySetting + "]....." + myTemperature);
 	}
 	
 	public Temperature getTemperature() {
