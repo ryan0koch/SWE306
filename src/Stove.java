@@ -29,7 +29,11 @@ public class Stove {
 	 **** You must write the following method ****
 	 */
 	public void displayStove() {
-
+//		boolean blazing = false;
+		for (Burner burner :burners) {
+			burner.display();
+//			if (burner.getTemperature() == Temperature.BLAZING) {	
+			}
 	}
 	
 	/**
