@@ -19,7 +19,7 @@ public class Dog extends GamePiece implements Moveable{
 			gameBoard[this.getLocation()] = this.originalPiece; // remove piece from old square
 		}
 		
-		speed = random.nextInt(1) + 1; // move a random number of tiles between 0-9
+		speed = random.nextInt(9) + 1; // move a random number of tiles between 0-9
 		int newLoc = this.getLocation() + (speed* this.direction); // Find new LOCATION
 		
 		if(MoveHelper.onBoard(newLoc)){ // Check if moving off the board
