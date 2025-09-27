@@ -75,7 +75,40 @@ public class LevelSetup {
 	}
 	
 	private void setupLevel2() {
-		this.board[7] = new Chair();
+		// Reset interaction, movement, and board arrays
+		this.interactableArr.clear();
+		this.moveableArr.clear();
+		this.board = new Drawable[GameEngine.BOARD_SIZE]; 
+
+		
+		CoffeeTable coffeeTable = new CoffeeTable(17);
+		this.board[17] = coffeeTable;
+		interactableArr.add(coffeeTable);
+		
+		Heater heater = new Heater(3);
+		this.board[3] = heater;
+		interactableArr.add(heater);
+		
+		TV tv = new TV(12);
+		this.board[12] = tv;
+		interactableArr.add(tv);
+		
+		Chair chair = new Chair();
+		this.board[7] = chair;
+		
+		Fan fan = new Fan(18);
+		this.board[18] = fan;
+		interactableArr.add(fan);
+		
+		Dog dog = new Dog(20);
+		this.board[20] = dog;
+		interactableArr.add(dog);
+		moveableArr.add(dog);
+		
+		Roomba roomba = new Roomba(6);
+		this.board[6] = roomba;
+		interactableArr.add(roomba);
+		moveableArr.add(roomba);
 	}
 	
 	public Drawable[] getBoard(){
