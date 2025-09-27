@@ -11,7 +11,7 @@ public class Fan extends GamePiece{
 	@Override
 	public InteractionResult interact(Drawable [] gameBoard, int playerLocation) {
 		if(this.getLocation() -1 == playerLocation || this.getLocation() -2 == playerLocation) {
-			return InteractionResult.GET_POINT;
+			return InteractionResult.HIT;
 		}else return InteractionResult.NONE;
 	}
 
