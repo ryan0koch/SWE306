@@ -13,8 +13,13 @@ public class Dog extends GamePiece implements Moveable{
 	
 	@Override
 	public void move(Drawable[] gameBoard, int playerLocation) {
-		gameBoard[this.getLocation()] = this.originalPiece; // remove piece from old square
-		speed = random.nextInt(9) + 1; // move a random number of tiles between 0-9
+		
+		// Don't add back Roomba since roomba will move away anyway
+		if (!(this.originalPiece instanceof Roomba)) {
+			gameBoard[this.getLocation()] = this.originalPiece; // remove piece from old square
+		}
+		
+		speed = random.nextInt(1) + 1; // move a random number of tiles between 0-9
 		int newLoc = this.getLocation() + (speed* this.direction); // Find new LOCATION
 		
 		if(MoveHelper.onBoard(newLoc)){ // Check if moving off the board

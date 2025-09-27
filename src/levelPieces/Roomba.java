@@ -11,7 +11,12 @@ public class Roomba extends GamePiece implements Moveable{
 	
 	@Override
 	public void move(Drawable[] gameBoard, int playerLocation) {
-		gameBoard[this.getLocation()] = this.originalPiece; // restore previous square to its original piece
+		
+		// Don't add back if Dog since dog will move away anyway
+		if(!(originalPiece instanceof Dog)) {
+			gameBoard[this.getLocation()] = this.originalPiece; // restore previous square to its original piece
+		}
+
 		int newLoc = this.getLocation() + this.direction; // Find next LOCATION
 		
 		if(MoveHelper.onBoard(newLoc)){ // Check if moving off the board
@@ -38,5 +43,4 @@ public class Roomba extends GamePiece implements Moveable{
 			return InteractionResult.HIT;
 		}else return InteractionResult.NONE;
 	}
-	
 }
