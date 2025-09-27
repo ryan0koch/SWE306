@@ -1,3 +1,11 @@
+/**
+ * hard codes level 1 and 2 for game
+ * 
+ * @author Ryan Koch
+ * @author Yamato Matsumura
+ * 
+ */
+
 package levelPieces;
 
 import java.util.ArrayList;

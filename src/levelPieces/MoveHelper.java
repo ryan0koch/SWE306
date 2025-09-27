@@ -1,3 +1,11 @@
+/**
+ * Helps check if a piece is going to move out of bounds of the board
+ * 
+ * @author Ryan Koch
+ * @author Yamato Matsumura
+ * 
+ */
+
 package levelPieces;
 import gameEngine.GameEngine;
 

@@ -1,3 +1,11 @@
+/**
+ * Fan piece in Kerplop
+ * 
+ * @author Ryan Koch
+ * @author Yamato Matsumura
+ * 
+ */
+
 package levelPieces;
 
 import gameEngine.Drawable;

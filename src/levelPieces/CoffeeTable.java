@@ -1,3 +1,11 @@
+/**
+ * CoffeeTable piece in Kerplop
+ * 
+ * @author Ryan Koch
+ * @author Yamato Matsumura
+ * 
+ */
+
 package levelPieces;
 import gameEngine.InteractionResult;
 import gameEngine.Drawable;

@@ -1,3 +1,11 @@
+/**
+ * Roomba piece in Kerplop. Moves in a linear manner
+ * 
+ * @author Ryan Koch
+ * @author Yamato Matsumura
+ * 
+ */
+
 package levelPieces;
 
 import gameEngine.Moveable;

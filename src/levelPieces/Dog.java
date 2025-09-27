@@ -1,3 +1,11 @@
+/**
+ * Dog piece in Kerplop. Moves in a random matter
+ * 
+ * @author Ryan Koch
+ * @author Yamato Matsumura
+ * 
+ */
+
 package levelPieces;
 
 import gameEngine.Moveable;
