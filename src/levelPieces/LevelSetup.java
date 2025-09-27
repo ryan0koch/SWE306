@@ -44,7 +44,34 @@ public class LevelSetup {
 	}
 	
 	private void setupLevel1() {
-		this.board[2] = new Chair();
+		CoffeeTable coffeeTable = new CoffeeTable(3);
+		this.board[3] = coffeeTable;
+		interactableArr.add(coffeeTable);
+		
+		Heater heater = new Heater(8);
+		this.board[8] = heater;
+		interactableArr.add(heater);
+		
+		TV tv = new TV(13);
+		this.board[13] = tv;
+		interactableArr.add(tv);
+		
+		Chair chair = new Chair();
+		this.board[16] = chair;
+		
+		Fan fan = new Fan(18);
+		this.board[18] = fan;
+		interactableArr.add(fan);
+		
+		Dog dog = new Dog(5);
+		this.board[5] = dog;
+		interactableArr.add(dog);
+		moveableArr.add(dog);
+		
+		Roomba roomba = new Roomba(20);
+		this.board[20] = roomba;
+		interactableArr.add(roomba);
+		moveableArr.add(roomba);
 	}
 	
 	private void setupLevel2() {
