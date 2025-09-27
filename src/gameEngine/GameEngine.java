@@ -67,7 +67,7 @@ public class GameEngine {
 		// Give player a default location of 0
 		player = new Player(0);
 
-		displayInstructions() ;
+		displayInstructions();
 		
 		// play through the levels until all done or player dies
 		while (currentLevel < NUM_LEVELS && !player.isDead()) {
