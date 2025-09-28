@@ -50,7 +50,7 @@ public class Dog extends GamePiece implements Moveable{
 	
 	@Override
 	public InteractionResult interact(Drawable [] gameBoard, int playerLocation) {
-		if(this.getLocation() + (speed*this.direction) == playerLocation) {
+		if(this.getLocation()  == playerLocation) {
 			return InteractionResult.ADVANCE;
 		}else return InteractionResult.NONE;
 	}
