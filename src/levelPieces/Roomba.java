@@ -20,6 +20,15 @@ public class Roomba extends GamePiece implements Moveable{
 	@Override
 	public void move(Drawable[] gameBoard, int playerLocation) {
 		
+		// Handles edge case when roomba starts at 20 or 0 and needs to turn around
+		if (this.getLocation() == 20 && this.direction == 1) {
+			this.direction = this.direction * -1;
+		}
+		else if (this.getLocation() == 0 && this.direction == -1) {
+			this.direction = this.direction * -1;
+		}
+
+		
 		// Don't add back if Dog since dog will move away anyway
 		if(!(originalPiece instanceof Dog)) {
 			gameBoard[this.getLocation()] = this.originalPiece; // restore previous square to its original piece
@@ -27,16 +36,13 @@ public class Roomba extends GamePiece implements Moveable{
 
 		int newLoc = this.getLocation() + this.direction; // Find next LOCATION
 		
-		if(MoveHelper.onBoard(newLoc)){ // Check if moving off the board
-			originalPiece = gameBoard[newLoc]; // update what piece Roomba landed on
-			gameBoard[newLoc] = this; // move Roomba on top of original piece
-			this.setLocation(newLoc);
-		}else {
+		originalPiece = gameBoard[newLoc]; // update what piece Roomba landed on
+		gameBoard[newLoc] = this; // move Roomba on top of original piece
+		this.setLocation(newLoc);
+		
+		// Turn roomba around once it lands on the edge of the board
+		if (newLoc == 20 || newLoc == 0) {
 			this.direction = this.direction * -1;
-			newLoc = this.getLocation() + this.direction; // switch direction
-			originalPiece = gameBoard[newLoc]; // update what piece Roomba landed on
-			gameBoard[newLoc] = this;
-			this.setLocation(newLoc);
 		}
 	}
 	
